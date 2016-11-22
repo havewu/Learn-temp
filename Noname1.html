@@ -1,99 +1,73 @@
 <!DOCTYPE html>
 <html>
  <head>
-  <title> new document </title>  
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>   
+  <title> sohu </title>  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <style type="text/css">
+    *{padding: 0px;margin: 0px;}
+    #xinwen{/*border: 1px solid #000;*/width:290px;height:150px;padding: 5px;margin: 20px}
+    #title{height:30px;border-bottom:2px solid green;}
+    /*#title+ul{height:120px;line-height: 25px;list-style:none;border: 1px solid blue;border-top:none;padding: 5px;}*/
+    ul[name=content]{height:120px;line-height: 25px;list-style:none;border: 1px solid blue;border-top:none;padding: 5px;}
+    #title li{background:#F0FFFF;cursor:pointer;display:inline-block;border:1px grey solid;border-bottom:none;margin:0px 3px;width:60px;height: 28px;line-height:180%;text-align: center;}
+    #title li.on{border-top:2px solid green;border-bottom:2px solid #FFF;}
+    .hide{display: none;}
+  </style>
   <script type="text/javascript"> 
-  
-      window.onload = function(){
-                  
-     // 鼠标移动改变背景,可以通过给每行绑定鼠标移上事件和鼠标移除事件来改变所在行背景色。
-        var tr =document.getElementsByTagName("tr"); 
-        //写法一：
-    //     for(var i = 1;i < tr.length;i++){
-		  //  tr[i].onmouseover = function (){
-    // 	        this.style = "background-color:#f2f2f2";
-    //         }
-    //         tr[i].onmouseout = function (){
-    //             this.style = "background-color:#fff";
-    //         }
-    //     }
-        //写法二：
-        for(var i = 1;i < tr.length;i++){
-            color(tr[i]);
-        }        
-
-        //写法三：
-//         for(var i = 0;i < tr.length;i++){		    
-//             tr[i].onmouseover=function(){mOver(this)};
-//             tr[i].onmouseout=function(){mOut(this)};
-//         }
-//         function mOver(obj){
-// 			obj.style.backgroundColor = "#F3F";
-// 		}
-// 		function mOut(obj){
-// 			obj.style.backgroundColor = "#3F3";
-// 		}
-	 }     
-        function color(obj){
-            obj.onmouseover=
-                function (){
-                // this.style.backgroundColor="#2FF";
-                  obj.style.backgroundColor="#2FF";
-                }
-            obj.onmouseout=
-                function (){
-                // this.style.backgroundColor="#FF2";
-                    obj.style.backgroundColor="#FF2";
-                }
-        }     
-      // 创建删除函数
-        function del(obj) {
-			var thisobj = obj.parentNode.parentNode;
-			thisobj.parentNode.removeChild(thisobj);
-		}
-		function del2(obj) {
-			obj.parentNode.parentNode.removeChild(obj.parentNode);
-		}
-     // 编写一个函数，供添加按钮调用，动态在表格的最后一行添加子节点；
-     function add(){ 
-        var newtr = document.createElement("tr");
-        for(var i = 0;i<3;i++){
-            var newtd = document.createElement("td");
-            newtr.appendChild(newtd);
-            //td.innerHTML=function(){"dele(this)"};
-            var newtext = document.createElement("td");
-            newtd.appendChild(newtext);
+    window.onload = function(){
+      var t = document.getElementById("title");
+      var on = t.getElementsByTagName("li");
+      var c = document.getElementsByName("content");
+      // document.write(c[1]);
+        for(var i=0;i<on.length;i++){
+          // on[i].index = i;
+          oChange(i);
         }
-        newtr.lastChild.innerHTML="<a href='javascript:;' d>删除</a>";
-        newtr.lastChild.onclick=function(){del2(this)};
-        var oldNode = document.getElementById("table");
-        oldNode.appendChild(newtr);
-        color(newtr);
-     }
+        //测试on[1].onclick=function(){c[0].className="hide";}
+        function oChange(num){
+          alert(num);
+          on[num].onclick=function(){
+            for(var n=0;n<3;n++){
+              // c[n].style.display=(c[n].style.display=="none")?"block":"none";
+            // c[n].className=(c[n].className=="hide")?c[n].removeAttribute("class"):"hide";
+              c[n].className="hide";
+              on[n].className="";
+            }
+            // c[i].style.display="block";
+            // c[this.index].removeAttribute("class");
+            c[num].className="";
+            on[num].className="on";
+          }
+
+        };         
+    }   
   </script> 
  </head> 
  <body> 
-	   <table border="1" width="50%" id="table">
-	   <tr>
-		<th>学号</th>
-		<th>姓名</th>
-		<th>操作</th>
-	   </tr>  
-
-	   <tr>
-		<td>xh001</td>
-		<td>王小明</td>
-		<td><a href="javascript:;" onclick="del2(this)" d>删除</a></td>   <!--在删除按钮上添加点击事件  -->
-	   </tr>
-
-	   <tr>
-		<td>xh002</td>
-		<td>刘小芳</td>
-		<td><a href="javascript:;" onclick="del(this)" d>删除</a></td>   <!--在删除按钮上添加点击事件  -->
-	   </tr>  
-
-	   </table>
-	   <input type="button" value="添加一行" onclick="add()" />   <!--在添加按钮上添加点击事件  -->
+ <div id="xinwen">
+    <ul id="title">
+      <li class="on">房产</li>
+      <li>家居</li>
+      <li>二手房</li>
+    </ul>
+    <ul name="content">
+      <li><a href="#">内容1内容1内容1内容1内容1内容1</a></li>
+      <li><a href="#">内容1内容1内容1内容1内容1内容1</a></li>
+      <li><a href="#">内容1内容1内容1内容1内容1内容1</a></li>
+      <li><a href="#">内容1内容1内容1内容1内容1内容1</a></li>
+    </ul>
+    <ul name="content" class="hide">
+      <li><a href="#">内容2内容2内容2内容2内容2内容2</a></li>
+      <li><a href="#">内容2内容2内容2内容2内容2内容2</a></li>
+      <li><a href="#">内容2内容2内容2内容2内容2内容2</a></li>
+      <li><a href="#">内容2内容2内容2内容2内容2内容2</a></li>
+    </ul>
+    <ul name="content" class="hide">
+      <li><a href="#">内容3内容3内容3内容3内容3内容3</a></li>
+      <li><a href="#">内容3内容3内容3内容3内容3内容3</a></li>
+      <li><a href="#">内容3内容3内容3内容3内容3内容3</a></li>
+      <li><a href="#">内容3内容3内容3内容3内容3内容3</a></li>
+    </ul>
+ </div>
  </body>
 </html>
