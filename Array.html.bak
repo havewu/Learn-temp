@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+ <script type="text/javascript">
+var arr=[	{ name: "Robin Van Persie", age: 28 },{ name: "Theo Walcott", age: 22 },		{ name: "Bacary Sagna", age: 26  }]
+function sorta(obj1, obj2) {
+	// Ascending: first age less than the previous
+									return obj1.age - obj2.age;
+}
+document.write(arr.sort(sorta));
+</script>
+ </body>
+</html>

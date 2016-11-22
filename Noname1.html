@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>   
+  <script type="text/javascript"> 
+  
+      window.onload = function(){
+                  
+     // 鼠标移动改变背景,可以通过给每行绑定鼠标移上事件和鼠标移除事件来改变所在行背景色。
+        var tr =document.getElementsByTagName("tr"); 
+        //写法一：
+    //     for(var i = 1;i < tr.length;i++){
+		  //  tr[i].onmouseover = function (){
+    // 	        this.style = "background-color:#f2f2f2";
+    //         }
+    //         tr[i].onmouseout = function (){
+    //             this.style = "background-color:#fff";
+    //         }
+    //     }
+        //写法二：
+        for(var i = 1;i < tr.length;i++){
+            color(tr[i]);
+        }        
+
+        //写法三：
+//         for(var i = 0;i < tr.length;i++){		    
+//             tr[i].onmouseover=function(){mOver(this)};
+//             tr[i].onmouseout=function(){mOut(this)};
+//         }
+//         function mOver(obj){
+// 			obj.style.backgroundColor = "#F3F";
+// 		}
+// 		function mOut(obj){
+// 			obj.style.backgroundColor = "#3F3";
+// 		}
+	 }     
+        function color(obj){
+            obj.onmouseover=
+                function (){
+                // this.style.backgroundColor="#2FF";
+                  obj.style.backgroundColor="#2FF";
+                }
+            obj.onmouseout=
+                function (){
+                // this.style.backgroundColor="#FF2";
+                    obj.style.backgroundColor="#FF2";
+                }
+        }     
+      // 创建删除函数
+        function del(obj) {
+			var thisobj = obj.parentNode.parentNode;
+			thisobj.parentNode.removeChild(thisobj);
+		}
+		function del2(obj) {
+			obj.parentNode.parentNode.removeChild(obj.parentNode);
+		}
+     // 编写一个函数，供添加按钮调用，动态在表格的最后一行添加子节点；
+     function add(){ 
+        var newtr = document.createElement("tr");
+        for(var i = 0;i<3;i++){
+            var newtd = document.createElement("td");
+            newtr.appendChild(newtd);
+            //td.innerHTML=function(){"dele(this)"};
+            var newtext = document.createElement("td");
+            newtd.appendChild(newtext);
+        }
+        newtr.lastChild.innerHTML="<a href='javascript:;' d>删除</a>";
+        newtr.lastChild.onclick=function(){del2(this)};
+        var oldNode = document.getElementById("table");
+        oldNode.appendChild(newtr);
+        color(newtr);
+     }
+  </script> 
+ </head> 
+ <body> 
+	   <table border="1" width="50%" id="table">
+	   <tr>
+		<th>学号</th>
+		<th>姓名</th>
+		<th>操作</th>
+	   </tr>  
+
+	   <tr>
+		<td>xh001</td>
+		<td>王小明</td>
+		<td><a href="javascript:;" onclick="del2(this)" d>删除</a></td>   <!--在删除按钮上添加点击事件  -->
+	   </tr>
+
+	   <tr>
+		<td>xh002</td>
+		<td>刘小芳</td>
+		<td><a href="javascript:;" onclick="del(this)" d>删除</a></td>   <!--在删除按钮上添加点击事件  -->
+	   </tr>  
+
+	   </table>
+	   <input type="button" value="添加一行" onclick="add()" />   <!--在添加按钮上添加点击事件  -->
+ </body>
+</html>

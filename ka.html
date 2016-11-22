@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> sohu </title>  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <style type="text/css">
+    *{padding: 0px;margin: 0px;}
+    #xinwen{/*border: 1px solid #000;*/width:290px;height:150px;padding: 5px;margin: 20px}
+    #title{height:30px;border-bottom:2px solid green;}
+    #xinwen div{height:120px;line-height: 25px;list-style:none;border: 1px solid blue;border-top:none;padding: 5px;}
+    #title li{background:#F0FFFF;cursor:pointer;display:inline-block;border:1px grey solid;border-bottom:none;margin:0px 3px;width:60px;height: 28px;line-height:180%;text-align: center;}
+    #title li.on{border-top:2px solid green;border-bottom:2px solid #FFF;}
+    .hide{display: none;}
+  </style>
+  <script type="text/javascript"> 
+    function f1(){
+  　　　　var n=999;
+  　　　　var nAdd=function(){n+=1}
+  　　　　function f2(){
+  　　　　　　alert(n);
+  　　　　}
+  　　　　return f2;
+    }
+    var result=f1();
+　　result(); // 999
+　　nAdd();
+　　result(); // 1000
+  </script> 
+ </head> 
+ <body> 
+ <div id="xinwen">
+    <ul id="title">
+      <li class="on">房产</li>
+      <li>家居</li>
+      <li>二手房</li>
+    </ul>
+    <div>
+      <li><a href="#">内容1内容1内容1内容1内容1内容1</a></li>
+      <li><a href="#">内容1内容1内容1内容1内容1内容1</a></li>
+      <li><a href="#">内容1内容1内容1内容1内容1内容1</a></li>
+      <li><a href="#">内容1内容1内容1内容1内容1内容1</a></li>
+    </div>
+    <div class="hide">
+      <li><a href="#">内容2内容2内容2内容2内容2内容2</a></li>
+      <li><a href="#">内容2内容2内容2内容2内容2内容2</a></li>
+      <li><a href="#">内容2内容2内容2内容2内容2内容2</a></li>
+      <li><a href="#">内容2内容2内容2内容2内容2内容2</a></li>
+    </div>
+    <div class="hide">
+      <li><a href="#">内容3内容3内容3内容3内容3内容3</a></li>
+      <li><a href="#">内容3内容3内容3内容3内容3内容3</a></li>
+      <li><a href="#">内容3内容3内容3内容3内容3内容3</a></li>
+      <li><a href="#">内容3内容3内容3内容3内容3内容3</a></li>
+    </div>
+ </div>
+ </body>
+</html>

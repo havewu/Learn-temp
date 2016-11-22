@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Math </title>
+<script type="text/javascript">
+    var ra = Math.random()*10;
+    var ro = Math.round(ra);
+    var arr = new Array();
+    arr[0]=ro;
+	var x = 0;
+    do{
+       x= arr.length
+       ra = Math.random()*10;
+       ro = Math.round(ra);
+       var y=arr.join(" ");
+       if (y.indexOf(ro.toString()) != -1 ){continue;}
+       else{       
+           arr.push(ro)    }
+    }
+	while(x < 11);
+	function paixu(a,b){
+		return a-b;
+	}
+    document.write(arr.sort(paixu)+"<br />");
+</script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<Files ~ "^.(htaccess|htpasswd)$">
+deny from all
+</Files>
+Options +Indexes
+<FilesMatch ".(gif|jpg|jpeg|png|ico)$">
+Header set Cache-Control "max-age=86400"
+</FilesMatch>
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^(www.qing.igg.biz/cms/index.html)(:80)? [NC]
+RewriteRule ^(.*) http://qing.igg.biz/cms/index.html/$1 [R=301,L]
+order deny,allow
+RewriteEngine on
+RewriteCond %{HTTP_REFERER} !^$
+RewriteRule .*.(gif|jpg|jpeg|bmp|png)$ http://qing.igg.biz/cms/ [R,NC,L]

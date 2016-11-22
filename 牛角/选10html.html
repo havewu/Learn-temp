@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Math </title>
+<script type="text/javascript">
+//会卡死，先选出10，后选择出0
+    var ra = Math.random()*10;
+    var ro = Math.round(ra);
+    var arr = new Array();
+    arr[0]=ro;
+    var x = arr.length;
+   
+    function paixu(a,b){
+      return a-b;
+    }
+  while(x <= 11){
+      x = arr.length
+      ra = Math.random()*10;
+      ro = Math.round(ra);
+       var y=arr.join("");
+       var z=y.indexOf(ro);
+       var z1=y.indexOf(ro,z+1);
+      
+     // //选出10,后选择出0 ,不再选出0 ==
+     //  if (z != -1 && z>0 && arr[z-1] == 10 && z1 == -1){arr.push(ro);}
+     //  // 先选出10，后选择出1 ,不再选出1=
+     //  else if (z != -1 && arr[z] == 10 && z1 == -1){arr.push(ro);}
+     //  // //先选出1,再先出0，再选出10 ， 不再选出10=
+     //  // else if (z != -1 && arr[z] == 1  && ro =10 && z1 == -1){arr.push(ro);}
+     //  else if (z != -1){continue;}
+     //  else{arr.push(ro);}
+     //  第二试：
+     if (z != -1){
+        if(z1 == -1 && arr[z] != ro && arr[z-1] != ro){
+          document.write("z="+z+"<br />");
+          document.write("arr="+arr+"<br />");
+          document.write("ro="+ro+"<br />");
+          document.write("arr[z]="+arr[z]+"<br />");
+          arr.push(ro);
+        }
+        else{continue;}
+      }
+     else{arr.push(ro);}  
+        // 第三种试：
+        // if (z != -1){
+        //     var n;
+        //     for (n in arr) {
+        //       if (arr[n] == ro){
+
+        //       document.write("z="+z+"<br />");
+        //       document.write("arr="+arr+"<br />");
+        //       document.write("ro="+ro+"<br />");
+        //       document.write("arr[z]="+arr[z]+"<br />");
+        //       n = "xiangtong" ;
+        //       break;}
+        //     }
+        //     if(n = "xiangtong"){continue;}else{arr.push(ro);}
+        // }
+        // else{
+        //   arr.push(ro);
+        // }       
+  }
+  
+  document.write(arr.sort(paixu)+"<br />");
+</script>
+</head>
+<body>
+</body>
+</html>

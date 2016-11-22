@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>浏览器对象</title>
+ <script type="text/javascript">  
+	function openWindon(){ 
+		if(confirm("确定打开新窗口吗？")){
+			var url = prompt("请输入一个网址","http://www.imooc.com/");
+			
+			if (url!==null)
+			{
+				var win1;
+	document.write(win1==true);
+				win1=window.open(url,"_blank","toolbar=no, menubar=no, scrollbars=yes,  width=400, height=400");
+		
+				if (confirm("关闭新窗口吗？"))
+				{
+					win1.window.close();
+				}
+	
+			}
+		}
+	}  
+/*	function winclose(){
+		if(confirm("关闭新打开的窗口吗？")){
+				window.close();
+		}	
+	}
+*/
+ </script> 
+
+</head>
+
+<body>
+  <input type="button" value="新窗口打开网站" onclick="openWindon()" /> 
+</body>
+</html>
