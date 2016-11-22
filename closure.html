@@ -8,13 +8,32 @@
     var tmp = 3;
       
     return function (){
-          alert(++tmp);
+          alert("测试是否闭包：" + ++tmp);
       };
-  }
-  var b = foo();
-  b();
-  b();
-  b();
+    }
+    var b = foo();
+    b();
+    b();
+    b();
+    function foo1(x) {
+      var tmp = 3;
+      function bar(y) {
+          alert("非闭包："+(x + y + (++tmp)));
+      }
+      bar(10);
+    }
+    foo1(2);foo1(2);
+    foo1(2);foo1(2);//非闭包
+    function foo2(x) {
+        var tmp = 3;
+        return function (y) {
+            alert("闭包："+(x + y + (++tmp)));
+        }
+    }
+    var bar = foo2(2); // bar 现在是一个闭包
+    bar(10);
+    bar(10);
+    bar(10);
   </script> 
  </head> 
  <body> 
